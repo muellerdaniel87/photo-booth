@@ -5,6 +5,7 @@
 		"height": 900,
 		"showDevTools": true,
 		"useGPIO": false,
+		"useRemoteTrigger": false,
 		"grayscaleMode": true,
 		"preventScreensaver": true
 	},

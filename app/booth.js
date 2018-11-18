@@ -74,6 +74,21 @@ if (utils.getConfig().init.useGPIO !== undefined ? utils.getConfig().init.useGPI
   });
 }
 
+/* Listen for infrared trigger
+ * Activate the use of infrared remote trigger with lirc by setting useRemoteTrigger in config.json to true.
+ */
+if (utils.getConfig().init.useRemoteTrigger !== undefined ? utils.getConfig().init.useRemoteTrigger : true) {
+  console.log('remote trigger not implemented yet');
+  const lirc = require('lirc-client')({
+    host: '127.0.0.1',
+    port: 8765
+  });
+
+  lirc.on('receive', function (remote, button, repeat) {
+    console.log('button ' + button + ' on remote ' + remote + ' was pressed!');
+});
+}
+
 const countdownLength = (typeof utils.getConfig().countdownLength == 'number') ? utils.getConfig().countdownLength : 5;
 
 var executing = false;
