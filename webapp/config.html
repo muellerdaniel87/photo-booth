@@ -64,6 +64,17 @@
 			  </div>
 
 			  <div class="row">
+			    <div class="cell">Image quality</div>
+			    <div class="cell">
+			    	<form action="#">
+						<p class="range-field">
+							<input type="range" min="0" max="100" step="1" id="imageQuality"/>
+						</p>
+					</form>
+			    </div>
+			  </div>
+
+			  <div class="row">
 			    <div class="cell">Keep images on Camera</div>
 			    <div class="cell">
 				    <div class="switch">
@@ -190,6 +201,7 @@
 				$('#fullscreen').prop('checked', config.init.fullscreen);
 
 				$('#maxImageSize').val(config.maxImageSize);
+				$('#imageQuality').val(config.imageQuality);
 			} else {
 				console.log('Server returned undefined config file');
 			}
@@ -204,6 +216,7 @@
 				config.init.fullscreen = $('#fullscreen').prop('checked');
 
 				config.maxImageSize = $('#maxImageSize').val();
+				config.imageQuality = $('#imageQuality').val();
 
 				socket.emit('set_config', {password: getCookie('password'), config: config});
 			} else if (option) {

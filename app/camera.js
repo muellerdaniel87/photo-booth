@@ -88,6 +88,7 @@ class Camera {
 		const webFilepath = utils.getWebAppPhotosDirectory() + "img_" + utils.getTimestamp() + ".jpg";
 		const maxImageSize = utils.getConfig().maxImageSize ? utils.getConfig().maxImageSize : 1500;
 		const keep = utils.getConfig().gphoto2.keep === true ?  true : false;
+		const imageQuality = utils.getConfig().imageQuality ? utils.getConfig().imageQuality : 80;
 
 		self.camera.takePicture({ download: true, keep: keep }, function (err, data) {
 
@@ -99,6 +100,7 @@ class Camera {
 
 			sharp(data) // resize image to given maxSize
 				.resize(Number(maxImageSize)) // scale width to 1500
+				.jpeg({quality: imageQuality})
 				.toFile(filepath, function(err) {
 					
 				if (err) {
