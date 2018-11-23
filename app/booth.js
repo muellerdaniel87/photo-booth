@@ -78,9 +78,8 @@ if (utils.getConfig().init.useGPIO !== undefined ? utils.getConfig().init.useGPI
  * Activate the use of infrared remote trigger with lirc by setting useRemoteTrigger in config.json to true.
  */
 if (utils.getConfig().init.useRemoteTrigger !== undefined ? utils.getConfig().init.useRemoteTrigger : true) {
-  console.log('remote trigger not implemented yet');
   const lirc = require('lirc-client')({
-    path: '/var/run/lirc/lird'
+    path: '/var/run/lirc/lircd'
   });
 
   lirc.on('receive', function (remote, button, repeat) {
@@ -109,7 +108,7 @@ function trigger() {
       // wait a sec for spinner to start
       setTimeout(function() {
         prompt.start(true, false);
-      }, 500);
+      }, 1500);
     });
 
     // take picture after countdown
@@ -132,7 +131,7 @@ function trigger() {
 
               setTimeout(function() {
                 utils.prependImage(message1);     // add image to collage
-              }, 500);
+              }, 1500);
 
               webApp.sendNewPhoto(message2);  // send image to connected web clients
 

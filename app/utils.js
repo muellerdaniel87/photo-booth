@@ -36,7 +36,7 @@ class Utils {
     this.defaultContentDirectory = path.join(__dirname, '../', '/content');
     this.webappSymlink = path.join(__dirname, "../", "./webapp/photos");
 
-    this.maxImages = 20;
+    this.maxImages = 5;
 
     this.getConfig();
     this.checkGrayscaleMode();
@@ -143,9 +143,9 @@ class Utils {
     fs.readdir(photos_dir, function(err, files){
 
       if (files) {
-        files.sort();
+        files.sort().reverse();
         var numberImages = (files.length < self.maxImages) ? files.length : self.maxImages;
-        for (var i = 0; i < numberImages; i++) {
+        for (var i = numberImages-1; i >= 0 ; i--) {
           //console.log(photos_dir+"/"+files[i]);
           // just take jpegs
           if ( files[i].endsWith(".jpg") || files[i].endsWith(".jpeg") || files[i].endsWith(".JPG") || files[i].endsWith(".JPEG") ){  
