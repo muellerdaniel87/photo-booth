@@ -36,7 +36,7 @@ class Utils {
     this.defaultContentDirectory = path.join(__dirname, '../', '/content');
     this.webappSymlink = path.join(__dirname, "../", "./webapp/photos");
 
-    this.maxImages = 5;
+    this.maxImages = 20;
 
     this.getConfig();
     this.checkGrayscaleMode();
