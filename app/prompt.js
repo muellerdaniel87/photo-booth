@@ -41,7 +41,7 @@ class Prompt {
 		if (self.activated && !self.active) {
 			self.active = true;
 			$(self.container).html(self.html);
-			$(self.container).fadeIn(250);
+			$(self.container).show();
 			
 			if (self.duration >= 0 ) {
 				self.timeout = setTimeout(function(){ 
@@ -135,19 +135,19 @@ class CountdownPrompt {
 		var self = this;
 		if (self.activated && !self.active) {
 			self.active = true;
-			$(self.container).fadeIn(250);
+			$(self.container).show();
 
 			// first time run immediatly	
 			self.html = self.htmlPre + self.duration + self.htmlPost;
 			$(self.container).html(self.html);
-			$(self.container).children().fadeOut(900);
+			$(self.container).children().show();
 			self.duration--;
 
 			self.interval = setInterval(function() {
 				if (self.duration > 0) {
 					self.html = self.htmlPre + self.duration + self.htmlPost;
 					$(self.container).html(self.html);
-					$(self.container).children().fadeOut(900);
+					$(self.container).children().show();
 					self.duration--;
 				} else {
 					clearInterval(self.interval);

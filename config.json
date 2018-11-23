@@ -6,14 +6,14 @@
 		"showDevTools": true,
 		"useGPIO": false,
 		"useRemoteTrigger": false,
-		"grayscaleMode": true,
+		"grayscaleMode": false,
 		"preventScreensaver": true
 	},
 	"maxImageSize": "1500",
-	"imageQuality": "80",
+	"imageQuality": 80,
 	"countdownLength": 5,
 	"slideshow": {
-		"enabled": true,
+		"enabled": false,
 		"activatesAfterSeconds": 30,
 		"secondsPerImages": 8
 	},

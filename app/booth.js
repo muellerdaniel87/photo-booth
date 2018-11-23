@@ -80,12 +80,11 @@ if (utils.getConfig().init.useGPIO !== undefined ? utils.getConfig().init.useGPI
 if (utils.getConfig().init.useRemoteTrigger !== undefined ? utils.getConfig().init.useRemoteTrigger : true) {
   console.log('remote trigger not implemented yet');
   const lirc = require('lirc-client')({
-    host: '127.0.0.1',
-    port: 8765
+    path: '/var/run/lirc/lird'
   });
 
   lirc.on('receive', function (remote, button, repeat) {
-    console.log('button ' + button + ' on remote ' + remote + ' was pressed!');
+    trigger();
 });
 }
 
@@ -110,7 +109,7 @@ function trigger() {
       // wait a sec for spinner to start
       setTimeout(function() {
         prompt.start(true, false);
-      }, 1500);
+      }, 500);
     });
 
     // take picture after countdown
@@ -133,7 +132,7 @@ function trigger() {
 
               setTimeout(function() {
                 utils.prependImage(message1);     // add image to collage
-              }, 1500);
+              }, 500);
 
               webApp.sendNewPhoto(message2);  // send image to connected web clients
 

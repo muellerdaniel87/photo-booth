@@ -97,7 +97,7 @@ class Camera {
 				callback(-2, 'connection to camera failed', err);
 				return;
 			} 
-
+			
 			sharp(data) // resize image to given maxSize
 				.resize(Number(maxImageSize)) // scale width to 1500
 				.jpeg({quality: imageQuality})
